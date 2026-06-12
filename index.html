@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gabriel &amp; Maju ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+    * {margin: 0; padding: 0; box-sizing: border-box;}
+  
+  .tela-entrada{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#fff5f7 0%,#ffe3ec 50%,#fff5f7 100%);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:20px;z-index:9999;transition:0.8s}
+  .tela-entrada h1{color:#d63384;font-size:30px;margin-bottom:15px;font-weight:300}
+  .tela-entrada p{color:#666;font-size:18px;margin-bottom:40px}
+  .btn-presente{background:#d63384;color:white;border:none;padding:18px 45px;font-size:22px;border-radius:50px;cursor:pointer;font-family:'Georgia',serif;box-shadow:0 8px 25px rgba(214,51,132,0.3);transition:0.3s}
+  .btn-presente:hover{transform:scale(1.05)}
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(180deg, #ffdde1 0%, #ee9ca7 100%);
+    color: #fff;
+    scroll-behavior: smooth;
+  }
+  .conteudo{display:none;opacity:0;transition:opacity 1s}
+  .conteudo.ativo{display:block;opacity:1}
+  section {
+    min-height: 100vh;
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  h1 {font-size: 3rem; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);}
+  h2 {font-size: 2rem; margin-bottom: 30px;}
+  p {font-size: 1.2rem; max-width: 700px; line-height: 1.8; margin-bottom: 15px;}
+  .panda {font-size: 7rem; animation: bounce 2s infinite; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));}
+  @keyframes bounce {0%, 100% {transform: translateY(0);} 50% {transform: translateY(-15px);}}
+  .timer {
+    display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;
+    background: rgba(255,255,255,0.2); padding: 30px; border-radius: 20px;
+    backdrop-filter: blur(10px); margin: 30px 0; box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  }
+  .timer-box {text-align: center;}
+  .timer-box span {font-size: 2.5rem; font-weight: 700; display: block; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);}
+  .capitulo {
+    background: rgba(255,255,255,0.15); 
+    padding: 30px; border-radius: 20px; 
+    margin: 20px 0; max-width: 700px;
+    backdrop-filter: blur(8px); box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+  }
+  .capitulo h3 {margin-bottom: 15px; font-size: 1.5rem;}
+  .galeria {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px; max-width: 1200px; width: 100%; margin-top: 30px;
+  }
+  .foto-item {
+    background: rgba(255,255,255,0.15);
+    padding: 12px;
+    border-radius: 15px;
+    backdrop-filter: blur(8px);
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+  .foto-item:hover {transform: scale(1.05) rotate(-1deg);}
+  .galeria img {
+    width: 100%; height: 250px; object-fit: cover;
+    border-radius: 10px; border: 3px solid rgba(255,255,255,0.5);
+  }
+  .legenda {font-size: 0.9rem; margin-top: 8px; opacity: 0.95; font-weight: 500;}
+  button {
+    background: #fff; color: #ee9ca7; border: none;
+    padding: 15px 40px; border-radius: 50px; font-size: 1.1rem;
+    cursor: pointer; margin-top: 20px; font-weight: 600;
+    transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+  button:hover {transform: scale(1.05);}
+  .hearts {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; overflow: hidden; z-index: -1;
+  }
+  .heart {
+    position: absolute; font-size: 2rem; animation: fall 6s linear infinite;
+  }
+  @keyframes fall {to {transform: translateY(100vh) rotate(360deg); opacity: 0;}}
+  nav {
+    position: fixed; top: 20px; background: rgba(255,255,255,0.2);
+    padding: 10px 20px; border-radius: 50px; backdrop-filter: blur(10px);
+    z-index: 100; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+  nav a {color: #fff; text-decoration: none; margin: 0 10px; font-weight: 500;}
+  .carta-texto {text-align: left; line-height: 2;}
+</style>
+</head>
+<body>
+<div class="hearts" id="hearts"></div>
+
+<div class="tela-entrada" id="entrada">
+  <h1>Pra você, meu amor</h1>
+  <p>Maju separou um presente especial</p>
+  <button class="btn-presente" onclick="abrirPresente()">Ver presente ❤️</button>
+</div>
+
+<div class="conteudo" id="conteudo">
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#historia">História</a>
+    <a href="#fotos">Fotos</a>
+    <a href="#carta">Carta</a>
+  </nav>
+
+  <section id="inicio">
+    <div class="panda">🐼❤️🐼</div>
+    <h1>Gabriel &amp; Maju ❤️</h1>
+    <p>Desde 01/09/2025</p>
+    <p>Juntos com a data e tudo mais</p>
+    <p>Obrigada por fazer parte da minha vida.</p>
+    
+    <div class="timer">
+      <div class="timer-box"><span id="dias">0</span>Dias</div>
+      <div class="timer-box"><span id="meses">0</span>Meses</div>
+      <div class="timer-box"><span id="horas">0</span>Horas</div>
+      <div class="timer-box"><span id="minutos">0</span>Min</div>
+      <div class="timer-box"><span id="segundos">0</span>Seg</div>
+    </div>
+    
+    <button onclick="tocarMusica()">Tocar nossa música 🎵</button>
+    <audio id="musica" loop>
+      <source src="https://files.catbox.moe/grljus.mp3" type="audio/mpeg">
+    </audio>
+  </section>
+
+  <section id="historia">
+    <h2>Nossa história</h2>
+    <div class="capitulo">
+      <h3>Capítulo 1 — O começo</h3>
+      <p>Tudo começou de um jeito inesperado. Você já tinha me visto no meu antigo trabalho, mas foi através do TikTok que nossas vidas realmente se cruzaram...</p>
+    </div>
+    <div class="capitulo">
+      <h3>Capítulo 2 — Nosso primeiro encontro</h3>
+      <p>O nosso primeiro encontro foi na sua casa, ao lado da sua família...</p>
+    </div>
+    <div class="capitulo">
+      <h3>Capítulo 3 — Saquarema</h3>
+      <p>Nossa viagem para Saquarema virou uma das lembranças mais bonitas...</p>
+    </div>
+    <div class="capitulo">
+      <h3>Capítulo 4 — Morando juntos</h3>
+      <p>Um dos maiores passos da nossa história foi quando decidimos construir uma rotina juntos...</p>
+    </div>
+  </section>
+
+  <section id="fotos">
+    <h2>📸 Retrospectiva - 20 momentos nossos</h2>
+    <div class="galeria">
+      <div class="foto-item"><img src="foto1.jpg" alt="1"><div class="legenda">Descansando juntas ☀️</div></div>
+      <div class="foto-item"><img src="foto2.jpg" alt="2"><div class="legenda">Selfie de casal no espelho 🥰</div></div>
+      <div class="foto-item"><img src="foto3.jpg" alt="3"><div class="legenda">Nós dois no estádio ⚽</div></div>
+      <div class="foto-item"><img src="foto4.jpg" alt="4"><div class="legenda">Nosso momento de paz ❤️</div></div>
+      <div class="foto-item"><img src="foto5.jpg" alt="5"><div class="legenda">Mais uma selfie nossa</div></div>
+      <div class="foto-item"><img src="foto6.jpg" alt="6"><div class="legenda">Rindo juntas no mirante</div></div>
+      <div class="foto-item"><img src="foto7.jpg" alt="7"><div class="legenda">Beijinho na pedra da praia</div></div>
+      <div class="foto-item"><img src="foto8.jpg" alt="8"><div class="legenda">Casal flamenguista ❤️🖤</div></div>
+      <div class="foto-item"><img src="foto9.jpg" alt="9"><div class="legenda">Pôr do sol e beijo no mar 🌅</div></div>
+      <div class="foto-item"><img src="foto10.jpg" alt="10"><div class="legenda">Banho juntos hahaha 😂</div></div>
+      <div class="foto-item"><img src="foto11.jpg" alt="11"><div class="legenda">Selfie no espelho do banheiro</div></div>
+      <div class="foto-item"><img src="foto12.jpg" alt="12"><div class="legenda">Coladinhos em você 🥰</div></div>
+      <div class="foto-item"><img src="foto13.jpg" alt="13"><div class="legenda">Gracinhas no carro</div></div>
+      <div class="foto-item"><img src="foto14.jpg" alt="14"><div class="legenda">Noite de piscina e V de vitória ✌️</div></div>
+      <div class="foto-item"><img src="foto15.jpg" alt="15"><div class="legenda">Meu abraço preferido</div></div>
+      <div class="foto-item"><img src="foto16.jpg" alt="16"><div class="legenda">Quase beijo na piscina 💋</div></div>
+      <div class="foto-item"><img src="foto17.jpg" alt="17"><div class="legenda">De mãos dadas rumo ao jogo</div></div>
+      <div class="foto-item"><img src="foto18.jpg" alt="18"><div class="legenda">Nosso bolo de 22 anos 🎂</div></div>
+      <div class="foto-item"><img src="foto19.jpg" alt="19"><div class="legenda">Selfie no espelho com carinho 🤍</div></div>
+      <div class="foto-item"><img src="foto20.jpg" alt="20"><div class="legenda">Nós no Maracanã juntos 🏟️</div></div>
+    </div>
+  </section>
+
+  <section id="carta">
+    <h2>💌 Carta final</h2>
+    <div class="capitulo carta-texto">
+      <p>Meu amor,</p>
+      <p>Às vezes eu paro para pensar em tudo o que vivemos até aqui...</p>
+      <p>Você se tornou o meu lugar favorito...</p>
+      <p>Eu amo as nossas conversas, as nossas risadas...</p>
+      <p>Obrigado por cada gesto de carinho...</p>
+      <p>Se eu pudesse fazer um pedido para o futuro...</p>
+      <p>Saiba que você é uma das pessoas mais importantes da minha vida...</p>
+      <p>Eu te amo mais do que as palavras conseguem explicar...</p>
+      <p style="margin-top: 30px; text-align: center;">Com todo o meu amor, hoje e sempre.<br><strong>Maju</strong> ❤️</p>
+    </div>
+  </section>
+</div>
+
+<script>
+function abrirPresente(){
+  document.getElementById('entrada').style.opacity='0';
+  setTimeout(()=>{
+    document.getElementById('entrada').style.display='none';
+    document.getElementById('conteudo').classList.add('ativo');
+    document.getElementById('musica').play();
+  },800);
+}
+
+const dataNamoro = new Date(2025, 8, 1, 0, 0, 0);
+function atualizarTimer() {
+  const agora = new Date();
+  const diff = agora - dataNamoro;
+  const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const meses = Math.floor(dias / 30);
+  const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+  document.getElementById('dias').textContent = dias;
+  document.getElementById('meses').textContent = meses;
+  document.getElementById('horas').textContent = horas;
+  document.getElementById('minutos').textContent = minutos;
+  document.getElementById('segundos').textContent = segundos;
+}
+setInterval(atualizarTimer, 1000);
+atualizarTimer();
+
+function criarCoracao() {
+  const heart = document.createElement('div');
+  heart.classList.add('heart');
+  heart.innerHTML = Math.random() > 0.5 ? '❤️' : '🐼';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.animationDuration = Math.random() * 3 + 4 + 's';
+  document.getElementById('hearts').appendChild(heart);
+  setTimeout(() => heart.remove(), 7000);
+}
+setInterval(criarCoracao, 400);
+
+function tocarMusica() {
+  document.getElementById('musica').play();
+}
+</script>
+</body>
+</html>
